@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "TabFlow AI",
+    "description": "The display name of the extension"
+  },
+  "extensionDescription": {
+    "message": "AI-powered tab organizer that automatically groups, saves memory, and finds any tab instantly",
+    "description": "The description of the extension shown in the Chrome Web Store"
+  }
+}

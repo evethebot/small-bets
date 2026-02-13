@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "{{PRODUCT_NAME}}",
+    "description": "The display name of the extension"
+  },
+  "extensionDescription": {
+    "message": "{{PRODUCT_DESC}}",
+    "description": "The description of the extension shown in the Chrome Web Store"
+  }
+}

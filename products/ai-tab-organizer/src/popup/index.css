@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-indigo-50: #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --border-color: #e5e7eb;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-light: #eef2ff;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+}
+
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --border-color: #374151;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --accent-light: #1e1b4b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 400px;
+  min-height: 200px;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 500px; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.2s ease-out;
+  overflow: hidden;
+}
+
+/* Tab group color indicators */
+.group-color-blue { border-left-color: #4285f4; }
+.group-color-red { border-left-color: #ea4335; }
+.group-color-yellow { border-left-color: #fbbc04; }
+.group-color-green { border-left-color: #34a853; }
+.group-color-pink { border-left-color: #e91e8f; }
+.group-color-purple { border-left-color: #9334e6; }
+.group-color-cyan { border-left-color: #24c1e0; }
+.group-color-orange { border-left-color: #fa903e; }
+.group-color-grey { border-left-color: #9aa0a6; }
+
+.group-dot-blue { background-color: #4285f4; }
+.group-dot-red { background-color: #ea4335; }
+.group-dot-yellow { background-color: #fbbc04; }
+.group-dot-green { background-color: #34a853; }
+.group-dot-pink { background-color: #e91e8f; }
+.group-dot-purple { background-color: #9334e6; }
+.group-dot-cyan { background-color: #24c1e0; }
+.group-dot-orange { background-color: #fa903e; }
+.group-dot-grey { background-color: #9aa0a6; }

@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "TabFlow AI",
+    "description": "扩展程序的显示名称"
+  },
+  "extensionDescription": {
+    "message": "AI-powered tab organizer that automatically groups, saves memory, and finds any tab instantly",
+    "description": "在 Chrome 网上应用店中显示的扩展程序描述"
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "common": {
+    "appName": "{{PRODUCT_NAME}}",
+    "getStarted": "立即开始",
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "signUp": "注册",
+    "dashboard": "控制台",
+    "settings": "设置",
+    "billing": "账单",
+    "loading": "加载中...",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "back": "返回",
+    "learnMore": "了解更多"
+  },
+  "hero": {
+    "badge": "公测已开放",
+    "title": "{{PRODUCT_HEADLINE}}",
+    "subtitle": "{{PRODUCT_DESC}}",
+    "cta": "免费试用",
+    "ctaSecondary": "了解使用方式",
+    "socialProof": "已有 {count}+ 用户信赖"
+  },
+  "features": {
+    "title": "一站式功能",
+    "subtitle": "强大的功能助你事半功倍。",
+    "feature1": {
+      "title": "极速体验",
+      "description": "专为速度而生，每次交互都经过极致优化。"
+    },
+    "feature2": {
+      "title": "默认安全",
+      "description": "企业级安全保障，端到端加密，符合 SOC 2 标准。"
+    },
+    "feature3": {
+      "title": "轻松集成",
+      "description": "几分钟内即可对接你现有的工具和系统。"
+    },
+    "feature4": {
+      "title": "内置分析",
+      "description": "通过美观实用的仪表盘深入了解你的数据。"
+    },
+    "feature5": {
+      "title": "团队协作",
+      "description": "实时同步与权限管理，让团队无缝协作。"
+    },
+    "feature6": {
+      "title": "全天候支持",
+      "description": "我们的团队随时为你提供帮助。"
+    }
+  },
+  "pricing": {
+    "title": "简洁透明的价格",
+    "subtitle": "选择适合你的方案，随时升级或降级。",
+    "monthly": "月付",
+    "yearly": "年付",
+    "lifetime": "终身",
+    "yearlyDiscount": "省 20%",
+    "perMonth": "/月",
+    "oneTime": "一次性",
+    "popular": "最受欢迎",
+    "subscribe": "订阅",
+    "currentPlan": "当前方案",
+    "free": {
+      "name": "免费版",
+      "price": "¥0",
+      "description": "适合入门体验",
+      "features": [
+        "最多 3 个项目",
+        "基础分析",
+        "社区支持",
+        "1 GB 存储"
+      ]
+    },
+    "pro": {
+      "name": "专业版",
+      "priceMonthly": "¥129",
+      "priceYearly": "¥99",
+      "description": "适合成长中的团队和企业",
+      "features": [
+        "无限项目",
+        "高级分析",
+        "优先支持",
+        "50 GB 存储",
+        "自定义域名",
+        "API 访问"
+      ]
+    },
+    "lifetime": {
+      "name": "终身版",
+      "price": "¥1999",
+      "description": "一次付费，终身使用",
+      "features": [
+        "包含专业版全部功能",
+        "终身免费更新",
+        "永久优先支持",
+        "无限存储",
+        "抢先体验新功能"
+      ]
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "关于 {{PRODUCT_NAME}} 你需要知道的一切。",
+    "items": [
+      {
+        "question": "免费试用怎么运作？",
+        "answer": "直接使用免费版开始，无需信用卡。需要更多功能时随时升级。"
+      },
+      {
+        "question": "可以取消订阅吗？",
+        "answer": "当然可以。你可以随时在控制台取消订阅，在当前计费周期结束前仍可正常使用。"
+      },
+      {
+        "question": "支持退款吗？",
+        "answer": "支持。所有付费方案享有 14 天无理由退款保证。"
+      },
+      {
+        "question": "支持哪些支付方式？",
+        "answer": "我们支持所有主流信用卡（Visa、Mastercard、Amex），通过 Stripe 安全处理支付。"
+      },
+      {
+        "question": "我的数据安全吗？",
+        "answer": "绝对安全。我们使用企业级加密，并遵循行业最佳数据安全实践。"
+      }
+    ]
+  },
+  "footer": {
+    "description": "{{PRODUCT_DESC}}",
+    "product": "产品",
+    "features": "功能",
+    "pricing": "价格",
+    "changelog": "更新日志",
+    "company": "公司",
+    "about": "关于我们",
+    "blog": "博客",
+    "careers": "加入我们",
+    "legal": "法律条款",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "copyright": "© {year} {{PRODUCT_NAME}}。保留所有权利。"
+  },
+  "dashboard": {
+    "welcome": "欢迎回来",
+    "overview": "概览",
+    "recentActivity": "最近活动",
+    "quickActions": "快捷操作"
+  },
+  "auth": {
+    "loginTitle": "欢迎回来",
+    "loginSubtitle": "登录你的账户以继续",
+    "signupTitle": "创建账户",
+    "signupSubtitle": "免费开始使用 {{PRODUCT_NAME}}",
+    "continueWithGoogle": "使用 Google 登录",
+    "continueWithGithub": "使用 GitHub 登录",
+    "orContinueWith": "或使用以下方式",
+    "noAccount": "还没有账户？",
+    "hasAccount": "已有账户？"
+  }
+}
