@@ -261,7 +261,9 @@ async function checkAndSuspendTabs(): Promise<void> {
     if (settings.excludedSites.some(site => domain.includes(site))) continue
 
     // Check if tab has been inactive long enough
-    const lastActive = tabLastActive.get(tab.id) ?? tab.lastAccessed ?? 0
+    // If we have no tracking data, skip — never suspend unknown tabs
+    const lastActive = tabLastActive.get(tab.id)
+    if (lastActive === undefined) continue
     if (now - lastActive > timeoutMs) {
       try {
         await chrome.tabs.discard(tab.id)
@@ -328,7 +330,8 @@ async function closeDuplicates(): Promise<number> {
 
 async function closeInactiveTabs(): Promise<number> {
   const settings = await loadSettings()
-  const timeoutMs = (settings.suspendTimeout || 30) * 60 * 1000
+  // Use a MINIMUM of 60 minutes for close-inactive, regardless of suspend setting
+  const timeoutMs = Math.max((settings.suspendTimeout || 60), 60) * 60 * 1000
   const now = Date.now()
   const tabs = await chrome.tabs.query({})
   let closed = 0
@@ -337,7 +340,10 @@ async function closeInactiveTabs(): Promise<number> {
     if (!tab.id || tab.active || tab.pinned) continue
     if (!tab.url || !isGroupableUrl(tab.url)) continue
 
-    const lastActive = tabLastActive.get(tab.id) ?? tab.lastAccessed ?? 0
+    const lastActive = tabLastActive.get(tab.id)
+    // If we have NO tracking data for this tab, do NOT close it
+    if (lastActive === undefined) continue
+
     if (now - lastActive > timeoutMs) {
       try {
         await chrome.tabs.remove(tab.id)
@@ -637,10 +643,13 @@ async function init(): Promise<void> {
   await chrome.alarms.create(ALARMS.SUSPEND_CHECK, { periodInMinutes: 5 })
   await chrome.alarms.create(ALARMS.STATS_UPDATE, { periodInMinutes: 10 })
 
-  // Mark all currently active tabs
-  const tabs = await chrome.tabs.query({ active: true })
-  for (const tab of tabs) {
-    if (tab.id) markTabActive(tab.id)
+  // Mark all existing tabs as active if they have no tracking data
+  const allTabs = await chrome.tabs.query({})
+  const now = Date.now()
+  for (const tab of allTabs) {
+    if (tab.id && !tabLastActive.has(tab.id)) {
+      tabLastActive.set(tab.id, now)
+    }
   }
 
   console.log('[TabFlow AI] Background service worker initialized')
@@ -648,9 +657,23 @@ async function init(): Promise<void> {
 
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === 'install') {
-    // Set default settings on first install
-    await storage.set(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS)
-    console.log('[TabFlow AI] Extension installed — defaults applied')
+    // Set default settings on first install — auto-organize OFF by default
+    const safeDefaults: Settings = {
+      ...DEFAULT_SETTINGS,
+      autoOrganize: false,
+      suspendTimeout: 0, // disabled until user explicitly enables
+    }
+    await storage.set(STORAGE_KEYS.SETTINGS, safeDefaults)
+
+    // Mark ALL existing tabs as "just active" so nothing gets killed
+    const allTabs = await chrome.tabs.query({})
+    const now = Date.now()
+    for (const tab of allTabs) {
+      if (tab.id) tabLastActive.set(tab.id, now)
+    }
+    await persistLastActive()
+
+    console.log('[TabFlow AI] Extension installed — all tabs marked safe, auto-organize OFF')
   }
   await init()
 })
